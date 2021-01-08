@@ -10,7 +10,7 @@ parser.add_argument('-t','--target',help="Indica el dominio de la victima")
 parser = parser.parse_args()
 
 def menu():
-    print("PyFinder\nSi me falta un banner pero me chupa un huevo xd\n\n#Hecho por J4SH")
+    print("PyFinder\nSi me falta un banner pero pa despues\n\n#Hecho por J4SH")
 menu()
 
 def main():
