@@ -22,6 +22,7 @@ def banner():
     print("\_|    \__, |\_|    |_||_| |_| \__,_| \___||_|   ")
     print("        __/ |                                    ")
     print("       |___/                                     ")
+    print("\n\nHECHO POR J4SH\n\n")
 
 def main():
     if args.target:
