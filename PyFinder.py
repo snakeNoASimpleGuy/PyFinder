@@ -1,5 +1,6 @@
 #Hecho por J4SH como parte del ejercicio de mi curso
 #Si hay derechos de autor por el name sorry :(
+import os
 import requests
 from os import path
 import argparse
@@ -14,6 +15,7 @@ parser.add_argument('-a','--admin',action='store_true',help="Encuentra la el log
 args = parser.parse_args()
 
 def banner():
+    os.system("cls")
     print("______       ______  _             _             ")
     print("| ___ \      |  ___|(_)           | |            ")
     print("| |_/ /_   _ | |_    _  _ __    __| |  ___  _ __ ")
@@ -22,7 +24,7 @@ def banner():
     print("\_|    \__, |\_|    |_||_| |_| \__,_| \___||_|   ")
     print("        __/ |                                    ")
     print("       |___/                                     ")
-    print("\n\nHECHO POR J4SH\n\n")
+    print("\n\nHECHO POR J4SH\n")
 
 def main():
     if args.target:
@@ -75,7 +77,7 @@ def main():
                     print("[+] Subdominio Descubierto: " + url)
 
     else:
-        print("\n\nPor favor usa '-h' para ver las opciones")
+        print("\nPor favor usa '-h' para ver las opciones\nIMPORTANTE: \n-Solo usar una opcion\n-Escribe la pagina SIN HTTP o HTTPS")
         sys.exit()
 
 if __name__ == '__main__':
