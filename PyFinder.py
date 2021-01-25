@@ -6,7 +6,7 @@ import argparse
 import sys
 
 def banner():
-    os.system("cls")
+    os.system("clear")
          rint("______       ______  _             _             ")
     print("| ___ \      |  ___|(_)           | |            ")
     print("| |_/ /_   _ | |_    _  _ __    __| |  ___  _ __ ")
