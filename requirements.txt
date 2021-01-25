@@ -1,4 +1,0 @@
-requests
-os
-argparse
-sys
