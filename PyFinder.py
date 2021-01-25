@@ -1,22 +1,13 @@
-#Hecho por J4SH como parte del ejercicio de mi curso
-#Si hay derechos de autor por el name sorry :(
+#Hecho por J4SH 
 import os
 import requests
 from os import path
 import argparse
 import sys
 
-parser = argparse.ArgumentParser()
-
-parser.add_argument('-t','--target',help="Indica el dominio victima")
-parser.add_argument('-s','--subdominios',action='store_true',help="Encuentra subdominios")
-parser.add_argument('-a','--admin',action='store_true',help="Encuentra la el login de admin")
-
-args = parser.parse_args()
-
 def banner():
     os.system("cls")
-    print("______       ______  _             _             ")
+         rint("______       ______  _             _             ")
     print("| ___ \      |  ___|(_)           | |            ")
     print("| |_/ /_   _ | |_    _  _ __    __| |  ___  _ __ ")
     print("|  __/| | | ||  _|  | || '_ \  / _` | / _ \| '__|")
@@ -24,61 +15,71 @@ def banner():
     print("\_|    \__, |\_|    |_||_| |_| \__,_| \___||_|   ")
     print("        __/ |                                    ")
     print("       |___/                                     ")
-    print("\n\nHECHO POR J4SH\n")
+    print("\n\nHECHO POR J4SH ayudado por: m3nth0l4thum gracias panita :3\n\n")
 
 def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('-t','--target',help="Indica el dominio victima")
+    parser.add_argument('-s','--subdominios',action='store_true',help="Encuentra subdominios")
+    parser.add_argument('-a','--admin',action='store_true',help="Encuentra la el login de admin")
+
+    args = parser.parse_args()
+
+
     if args.target:
         print(f"\n\nLa pagina es:  {args.target}\n ")
 
-    if args.admin:
-        if path.exists('admin.txt'):
-            wordlist = open('admin.txt','r')
-            wordlist = wordlist.read().split('\n')
+        if args.admin:
+            if path.exists('admin.txt'):
+                wordlist_archivo = open('admin.txt','r')
+                wordlist = wordlist_archivo.read().split('\n')
+                wordlist_archivo.close()
 
-            for admin in wordlist:
-                url = "http://"+admin+"."+args.target
-                try:
-                    requests.get(url)
-                except requests.ConnectionError:
-                    pass
-                else:
-                    print("[+] Admin login Descubierto: " + url)
+                for protocolo in ("http", "https"):
+                    for admin in wordlist:
+                        url = f"{protocolo}://{args.target}{admin}"
 
-            for admin in wordlist:
-                url = "https://" + admin + "." + args.target
-                try:
-                    requests.get(url)
-                except requests.ConnectionError:
-                    pass
-                else:
-                    print("[+] Admin login Descubierto: " + url)
+                        print(f"[+] Probando url '{url}'")
 
-    if args.subdominios:
-        if path.exists('subdominios.txt'):
-            wordlist = open('subdominios.txt','r')
-            wordlist = wordlist.read().split('\n')
+                        res = requests.get(url)
+                        print(f"[!] Respuesta: '{res.status_code}'")
 
-            for subdominio in wordlist:
-                url = "http://"+subdominio+"."+args.target
-                try:
-                    requests.get(url)
-                except requests.ConnectionError:
-                    pass
-                else:
-                    print("[+] Subdominio Descubierto: " + url)
+                        if res.status_code == 200:
+                            print("[+] Admin login Descubierto: " + url)
+                            break
+            else:
+                print("[-] Worldist de admin no encontrada")
 
-            for subdominio in wordlist:
-                url = "https://" + subdominio + "." + args.target
-                try:
-                    requests.get(url)
-                except requests.ConnectionError:
-                    pass
-                else:
-                    print("[+] Subdominio Descubierto: " + url)
+        if args.subdominios:
+            if path.exists('subdominios.txt'):
+                wordlist = open('subdominios.txt','r')
+                wordlist = wordlist.read().split('\n')
+                wordlist_archivo.close()
 
-    else:
-        print("\nPor favor usa '-h' para ver las opciones\nIMPORTANTE: \n-Solo usar una opcion\n-Escribe la pagina SIN HTTP o HTTPS")
-        sys.exit()
+                for subdominio in wordlist:
+                    url = "http://"+subdominio+"."+args.target
+                    print(url)
+                    try:
+                        requests.get(url)
+                    except requests.ConnectionError:
+                        pass
+                    else:
+                        print("[+] Subdominio Descubierto: " + url)
+
+                for subdominio in wordlist:
+                    url = "https://" + subdominio + "." + args.target
+                    print(url)
+                    try:
+                        requests.get(url)
+                    except requests.ConnectionError:
+                        pass
+                    else:
+                        print("[+] Subdominio Descubierto: " + url)
+
+        else:
+            print("\nPor favor usa '-h' para ver las opciones\nIMPORTANTE: \n-Solo usar una opcion\n-Escribe la pagina SIN HTTP o HTTPS\n-Por favor usa '/' al final de la url")
+            sys.exit()
 
 if __name__ == '__main__':
     try:
