@@ -1,4 +1,5 @@
-#Hecho por J4SH 
+#Hecho por J4SH como parte del ejercicio de mi curso
+#Si hay derechos de autor por el name sorry :(
 import os
 import requests
 from os import path
@@ -6,7 +7,7 @@ import argparse
 import sys
 
 def banner():
-    os.system("clear")
+    os.system("cls")
     print("______       ______  _             _             ")
     print("| ___ \      |  ___|(_)           | |            ")
     print("| |_/ /_   _ | |_    _  _ __    __| |  ___  _ __ ")
@@ -15,7 +16,7 @@ def banner():
     print("\_|    \__, |\_|    |_||_| |_| \__,_| \___||_|   ")
     print("        __/ |                                    ")
     print("       |___/                                     ")
-    print("\n\nHECHO POR J4SH ayudado por: m3nth0l4thum gracias panita :3\n\n")
+    print("\n\nHECHO POR J4SH\n")
 
 def main():
     parser = argparse.ArgumentParser()
@@ -53,8 +54,8 @@ def main():
 
         if args.subdominios:
             if path.exists('subdominios.txt'):
-                wordlist = open('subdominios.txt','r')
-                wordlist = wordlist.read().split('\n')
+                wordlist_archivo = open('subdominios.txt','r')
+                wordlist = wordlist_archivo.read().split('\n')
                 wordlist_archivo.close()
 
                 for subdominio in wordlist:
