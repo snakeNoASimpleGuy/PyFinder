@@ -18,7 +18,7 @@ parser.add_argument('-p','--portscan',action='store_true',help="Un simple escane
 args = parser.parse_args()
 
 def banner():
-#    os.system("clear")
+    os.system("clear")
     print("______       ______  _             _             ")
     print("| ___ \      |  ___|(_)           | |            ")
     print("| |_/ /_   _ | |_    _  _ __    __| |  ___  _ __ ")
@@ -111,4 +111,4 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print("\nSaliendo....")
         sys.exit()
-#Fallo a la hora de elegir admin y subdominios uncamente prueba las primeras 5 lineas de la wordlist y da fallo como si la wordlist no existira
+#Fallo a la hora de elegir admin y subdominios unicamente prueba las primeras 5 lineas de la wordlist y da fallo como si la wordlist no existira
