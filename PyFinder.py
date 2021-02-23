@@ -1,12 +1,10 @@
-#Hecho por J4SH como parte del ejercicio de mi curso
-#Si hay derechos de autor por el name sorry :(
+#Hecho por J4SH 
 import os
+from os import path
 import requests
 import socket
-from os import path
 import argparse
 import sys
-from datetime import datetime
 
 parser = argparse.ArgumentParser()
 
@@ -51,18 +49,12 @@ def admin():
         print("[-] Worldist de admin no encontrada!!!")
 
 def escanerpuertos():
-
-    print("-"*50)
-    print("El target es : " + args.target)
-    print("Inicio de escaneo: " +str(datetime.now()))
-    print("-"*50)
-
     for port in range(1,65536):#en futuro se agregara la opcion de elegir los puertos que se prefieran
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socket.setdefaulttimeout(1)
+        socket.setdefaulttimeout(0.3)
         result = s.connect_ex((args.target,port))
         if result == 0:
-            print(f"El puerto {port} se encuentra abierto")
+            print(f"[+]El puerto {port} se encuentra abierto")
         s.close()
 
 def subdominios():
@@ -90,7 +82,9 @@ def subdominios():
 def main():
 
     if args.target:
-        print(f"\n\nLa victima es: {args.target}\n")
+        print("-"*50)
+        print("El target es : " + args.target)
+        print("-"*50)
 
         if args.admin:
             admin()
