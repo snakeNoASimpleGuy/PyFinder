@@ -95,7 +95,7 @@ def main():
         if args.portscan:
             escanerpuertos()
     else:
-        print("\nIMPORTANTE: \n-Solo usar una opcion\n-Escribe la pagina SIN HTTP o HTTPS\n-Por favor usa '/' al final de la url\nEn el escaner de puertos por favor usa la ip\n")
+        print("\nIMPORTANTE: \n-Solo usar una opcion\n-Escribe la pagina SIN HTTP o HTTPS\n-Por favor usa '/' al final de la url, exepto en es escaner de puertos\n")
         sys.exit()
 
 if __name__ == '__main__':
