@@ -111,4 +111,3 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print("\nSaliendo....")
         sys.exit()
-#Fallo a la hora de elegir admin y subdominios unicamente prueba las primeras 5 lineas de la wordlist y da fallo como si la wordlist no existira
