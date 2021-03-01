@@ -131,7 +131,7 @@ def main():
             sqlscan()
     
     else:
-        print("\nIMPORTANTE: \n-Solo usar una opcion\n-Escribe la pagina SIN HTTP o HTTPS\n-Por favor usa '/' al final de la url\nEn el escaner de puertos por favor usa la ip\n")
+        print("\nIMPORTANTE: \n-Usa -h para ver las opciones\n-Solo usar una opcion\n-Escribe la pagina SIN HTTP o HTTPS\n-Por favor usa '/' al final de la url\n-En el escaner de puertos por favor usa la ip\n")
         sys.exit()
 
 if __name__ == '__main__':
